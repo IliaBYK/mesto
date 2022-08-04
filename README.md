@@ -27,7 +27,7 @@
 ### **Ссылка на макет**
 
 ### **Github Pages**
-* [Ссылка на Github Pages](https://kirill-kor.github.io/whereamigoing/)
+* [Ссылка на Github Pages](https://iliabyk.github.io/mesto/)
 
 ### **Автор**
 _Быков Илья_
