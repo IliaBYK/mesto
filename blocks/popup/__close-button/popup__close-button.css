@@ -4,6 +4,8 @@
   position: absolute;
   top: -40px;
   right: -40px;
+  background: url(../../../images/close-button.svg) no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width: 767px) {

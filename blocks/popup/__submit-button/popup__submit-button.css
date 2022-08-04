@@ -8,6 +8,7 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: normal;
+  margin-top: 48px;
 }
 
 .popup__submit-button:hover {
@@ -20,5 +21,6 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
+    margin-top: 44px;
   }
 }

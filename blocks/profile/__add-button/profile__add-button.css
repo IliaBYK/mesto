@@ -8,11 +8,14 @@
   color: var(--color-white);
   font-size: 36px;
   font-weight: normal;
+  background: url(../../../images/add-button.svg) no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width: 767px) {
   .profile__add-button {
     width: 282px;
     margin: 0 auto;
+    background-size: 16px;
   }
 }

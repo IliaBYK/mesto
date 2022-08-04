@@ -1,6 +1,5 @@
 .element {
   border-radius: 10px;
   background-color: var(--color-white);
-  max-height: 361px;
   overflow: hidden;
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
-  <title>Document</title>
+  <title>Проектная работа 4</title>
 </head>
 <body class="page">
   <!--header-->
@@ -23,87 +23,73 @@
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button button">
-          <img src="images/edit-button.svg" alt="Кнопка редактирования">
-        </button>
+        <button class="profile__edit-button button" type="button" aria-label="Кнопка редактирования профиля"></button>
       </div>  
-      <button class="profile__add-button button"><img src="images/add-button.svg" alt="Кнопка добавления"></button>
+      <button class="profile__add-button button" type="button" aria-label="Кнопка добавления"></button>
     </section>
     <!--elements-->
     <section class="elements">
-      <div class="element">
-        <img src="images/element__image.jpg" alt="Виды Домбая" class="element__img" id="dombay">
+      <article class="element">
+        <img src="images/element__image.jpg" alt="Виды Домбая" class="element__img">
         <div class="element__footer">
           <h3 class="element__title">Домбай</h3>
-          <button class="element__like-button button"></button>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div> 
-      </div>
-      <div class="element">
-        <img src="images/kareliya.jpg" alt="Природа Карелии" class="element__img" id="kareliya">
+      </article>
+      <article class="element">
+        <img src="images/kareliya.jpg" alt="Природа Карелии" class="element__img">
         <div class="element__footer">
-          <h3 class="element__title">Карелия, Киж</h3>
-          <button class="element__like-button button">
-            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
-          </button>
+          <h3 class="element__title">Карелия</h3>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div>
-      </div>
-      <div class="element">
-        <img src="images/kamchatka.jpg" alt="Камчатка" class="element__img" id="kamchatka">
+      </article>
+      <article class="element">
+        <img src="images/kamchatka.jpg" alt="Камчатка" class="element__img">
         <div class="element__footer">
           <h3 class="element__title">Камчатка</h3>
-          <button class="element__like-button button">
-            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
-          </button>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div>
-      </div>
-      <div class="element">
-        <img src="images/altay.jpg" alt="Природа Алтая" class="element__img" id="altay">
+      </article>
+      <article class="element">
+        <img src="images/altay.jpg" alt="Природа Алтая" class="element__img">
         <div class="element__footer">
           <h3 class="element__title">Алтай</h3>
-          <button class="element__like-button button">
-            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
-          </button>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div>
-      </div>
-      <div class="element">
-        <img src="images/baikal.jpg" alt="Пейзажи Байкала" class="element__img" id="baikal">
+      </article>
+      <article class="element">
+        <img src="images/baikal.jpg" alt="Пейзажи Байкала" class="element__img">
         <div class="element__footer">
           <h3 class="element__title">Байкал</h3>
-          <button class="element__like-button button">
-            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
-          </button>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div>
-      </div>
-      <div class="element">
-        <img src="images/northOsetiya.jpg" alt="Кавказские горы" class="element__img" id="caucasus">
+      </article>
+      <article class="element">
+        <img src="images/northOsetiya.jpg" alt="Кавказские горы" class="element__img">
         <div class="element__footer">
           <h3 class="element__title">Кавказ</h3>
-          <button class="element__like-button button">
-            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
-          </button>
+          <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
         </div>
-      </div>
+      </article>
     </section>
   </main>
   <!--footer-->
   <footer class="footer">
-    <p class="footer__description">© 2022 Mesto Russia</p>
+    <p class="footer__description">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="#" class="popup__form">
-        <input type="text" class="popup__input" id="popup__name" placeholder="Имя">
-        <input type="text" class="popup__input" id="popup__about" placeholder="О себе">
+      <form name="popupForm" class="popup__form">
+        <input type="text" class="popup__input" id="popupName" name="popupName" placeholder="Имя" required>
+        <input type="text" class="popup__input" id="popupAbout" name="popupAbout" placeholder="О себе" required>
+        <button class="popup__submit-button button" type="submit" aria-label="Кнопка 'Сохранить'">Сохранить</button>
       </form>
-      <button class="popup__submit-button button">Сохранить</button>
-      <button class="popup__close-button button"><img src="images/close-button.svg" alt="Кнопка закрытия всплывающего окна"></button>
+      <button class="popup__close-button button" type="reset" aria-label="Кнопка закрытия всплывающего окна"></button>
     </div>
-  </section>
+  </div>
 
-
-  <script src="https://code.s3.yandex.net/web-code/smoothly.js"></script>
-  <script src="index.js"></script>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
