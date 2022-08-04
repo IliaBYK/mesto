@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>Document</title>
+</head>
+<body class="page">
+  <!--header-->
+  <header class="header">
+    <img src="images/logo.svg" alt="Логотип" class="header__logo">
+    <div class="header__line"></div>
+  </header>
+  <!--container-->
+  <main class="container">
+    <!--profile-->
+    <section class="profile">
+      <img src="images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
+
+      <div class="profile__info">
+        <div class="profile__head">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__edit-button button">
+          <img src="images/edit-button.svg" alt="">
+        </button>
+      </div>  
+      <button class="profile__add-button button"><img src="images/add-button.svg" alt=""></button>
+    </section>
+    <!--elements-->
+    <section class="elements">
+      <div class="element">
+        <img src="images/element__image.jpg" alt="" class="element__img" id="dombay">
+        <div class="element__footer">
+          <h3 class="element__title">Домбай</h3>
+          <button class="element__like-button button"></button>
+        </div> 
+      </div>
+      <div class="element">
+        <img src="images/kareliya.jpg" alt="" class="element__img" id="kareliya">
+        <div class="element__footer">
+          <h3 class="element__title">Карелия, Киж</h3>
+          <button class="element__like-button button">
+            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="images/kamchatka.jpg" alt="" class="element__img" id="kamchatka">
+        <div class="element__footer">
+          <h3 class="element__title">Камчатка</h3>
+          <button class="element__like-button button">
+            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="images/altay.jpg" alt="" class="element__img" id="altay">
+        <div class="element__footer">
+          <h3 class="element__title">Алтай</h3>
+          <button class="element__like-button button">
+            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="images/baikal.jpg" alt="" class="element__img" id="baikal">
+        <div class="element__footer">
+          <h3 class="element__title">Байкал</h3>
+          <button class="element__like-button button">
+            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
+          </button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="images/northOsetiya.jpg" alt="" class="element__img" id="caucasus">
+        <div class="element__footer">
+          <h3 class="element__title">Кавказ</h3>
+          <button class="element__like-button button">
+            <img class="like-button" src="images/element__like-button.svg" alt="Кнопка 'Понравилось'">
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--footer-->
+  <footer class="footer">
+    <p class="footer__description">© 2022 Mesto Russia</p>
+  </footer>
+
+  <section class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form action="#" class="popup__form">
+        <input type="text" class="popup__input" id="popup__name" placeholder="Имя">
+        <input type="text" class="popup__input" id="popup__about" placeholder="О себе">
+      </form>
+      <button class="popup__submit-button button">Сохранить</button>
+      <button class="popup__close-button button"><img src="images/close-button.svg" alt=""></button>
+    </div>
+  </section>
+
+
+  <script src="https://code.s3.yandex.net/web-code/smoothly.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
