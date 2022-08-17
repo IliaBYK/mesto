@@ -5,5 +5,8 @@
   width: 100%;
   height: 100%;
   background-color: var(--color-bg-pop-up);
-  display: none;
+  display: flex;
+  transition: opacity .5s ease-out;
+  opacity: 0;
+  visibility: hidden;
 }

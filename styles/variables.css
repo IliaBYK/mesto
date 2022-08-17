@@ -3,6 +3,7 @@
   --color-white: #fff;
   --color-grey: #545454;
   --color-bg-pop-up: rgba(0, 0, 0, .5);
+  --color-bg-popup-image: rgba(0, 0, 0, .9);
   --opacity-low: .6;
   --transition-button: all .5s ease;
 }
