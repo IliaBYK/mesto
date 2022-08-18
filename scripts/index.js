@@ -75,6 +75,7 @@ function addCard(srcValue, titleValue) {
   const cardTitle = cardElement.querySelector('.element__title');
   cardImg.src = srcValue;
   cardTitle.textContent = titleValue;
+  //вот строчка, которая передает в alt заголовок карточки
   cardImg.alt = cardTitle.textContent;
 
   const likeButton = cardElement.querySelector('.element__like-button');
