@@ -57,7 +57,7 @@ formElement.addEventListener('submit', handleProfileFormSubmit);
 const popupImg = popupImage.querySelector('#popupImg');
 const imageDescription = popupImage.querySelector('.popup__description');
 
-function openPopupImage(name, link) {
+function openPopupImage(link, name) {
   popupImg.src = link;
   imageDescription.textContent = name;
   openPopup(popupImage);
