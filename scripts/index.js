@@ -60,6 +60,8 @@ const imageDescription = popupImage.querySelector('.popup__description');
 function openPopupImage(link, name) {
   popupImg.src = link;
   imageDescription.textContent = name;
+  
+  popupImg.alt = name;
   openPopup(popupImage);
 }
 
