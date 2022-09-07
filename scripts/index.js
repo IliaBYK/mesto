@@ -7,20 +7,30 @@ const buttonPopupAddClose = document.querySelector('#popupAddCloseButton');
 const buttonAdd = document.querySelector('.profile__add-button');
 const profileName = document.querySelector('.profile__title');
 const profileAbout = document.querySelector('.profile__subtitle');
-const srcInput = popupAdd.querySelector('#popupSrc');
-const titleInput = popupAdd.querySelector('#popupPlaceName');
-const nameInput = document.querySelector('#popupName');
-const jobInput = document.querySelector('#popupAbout');
+const srcInput = popupAdd.querySelector('#popup-src');
+const titleInput = popupAdd.querySelector('#popup-place-name');
+const nameInput = document.querySelector('#popup-name');
+const jobInput = document.querySelector('#popup-about');
 const cardsContainer = document.querySelector('.elements');
 
 //открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      popup.classList.remove('popup_opened');
+    }
+  });
 }
 
 //закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      popup.classList.remove('popup_opened');
+    }
+  });
 }
 
 //popupEdit
@@ -39,7 +49,7 @@ buttonClose.addEventListener('click', closePopupEdit);
 
 
 //сабмит формы редактирования профиля
-const formElement = document.querySelector('.popup__form');
+const popupEditForm = document.querySelector('#popupEditForm');
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -50,7 +60,7 @@ function handleProfileFormSubmit(evt) {
   closePopupEdit();
 }
 
-formElement.addEventListener('submit', handleProfileFormSubmit);
+popupEditForm.addEventListener('submit', handleProfileFormSubmit);
 //popupEdit
 
 //попап картинки 
@@ -141,3 +151,14 @@ function closePopupImage() {
 const buttonPopupImageClose = popupImage.querySelector('#closeButtonPopupImage');
 buttonPopupImageClose.addEventListener('click', closePopupImage);
 
+/*клик на оверлей*/
+
+const popapElements = Array.from(document.querySelectorAll('.popup'));
+popapElements.forEach((popapElement) => {
+  popapElement.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target) {
+      evt.stopPropagation();
+      closePopup(popapElement);
+    }
+  });
+});

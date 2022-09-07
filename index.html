@@ -58,10 +58,20 @@
   <div class="popup" id="popupEdit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="popupForm" class="popup__form">
-        <input type="text" class="popup__input" id="popupName" name="popupName" placeholder="Имя" required>
-        <input type="text" class="popup__input" id="popupAbout" name="popupAbout" placeholder="О себе" required>
-        <button class="popup__submit-button button" type="submit" aria-label="Кнопка 'Сохранить'">Сохранить</button>
+      <form name="popupForm" class="popup__form" id="popupEditForm" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" class="popup__input" id="popup-name" name="popupName" placeholder="Имя" minlength="2" maxlength="40" required>
+            <span class="popup-name-error popup__input-error"></span>
+          </label>
+
+          <label class="popup__field">
+            <input type="text" class="popup__input" id="popup-about" name="popupAbout" placeholder="О себе" minlength="2" maxlength="200" required>
+            <span class="popup-about-error popup__input-error"></span>
+          </label>
+
+          <button class="popup__submit-button button" id="popupEdit__submit-button" type="submit" aria-label="Кнопка 'Сохранить'">Сохранить</button>
+        </fieldset>
       </form>
       <button class="popup__close-button button" type="reset" aria-label="Кнопка закрытия всплывающего окна"></button>
     </div>
@@ -72,10 +82,20 @@
   <div class="popup" id="popupAdd">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form name="popupForm" class="popup__form" id="popupFormAdd">
-        <input type="text" class="popup__input" id="popupPlaceName" name="popupPlaceName" placeholder="Название" required>
-        <input type="text" class="popup__input" id="popupSrc" name="popupSrc" placeholder="Ссылка на картинку" required>
-        <button class="popup__submit-button button" id="popupAdd-submitButton" type="submit" aria-label="Кнопка 'Сохранить'">Создать</button>
+      <form name="popupForm" class="popup__form" id="popupFormAdd" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field">
+            <input type="text" class="popup__input" id="popup-place-name" name="popupPlaceName" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup-place-name-error popup__input-error"></span>
+          </label>
+
+          <label class="popup__field">
+            <input type="url" class="popup__input" id="popup-src" name="popupSrc" placeholder="Ссылка на картинку" required>
+            <span class="popup-src-error popup__input-error"></span>
+          </label>
+
+          <button class="popup__submit-button button" id="popupAdd-submitButton" type="submit" aria-label="Кнопка 'Создать'">Создать</button>
+        </fieldset>
       </form>
       <button class="popup__close-button button" id="popupAddCloseButton" type="reset" aria-label="Кнопка закрытия всплывающего окна"></button>
     </div>
@@ -94,5 +114,6 @@
 
   <script src="scripts/cards.js"></script>
   <script src="scripts/index.js"></script>
+  <script src="scripts/validation.js"></script>
 </body>
 </html>

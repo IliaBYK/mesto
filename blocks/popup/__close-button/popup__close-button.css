@@ -2,8 +2,8 @@
   width: 32px;
   height: 32px;
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -41px;
+  right: -39px;
   background: url(../../../images/close-button.svg) no-repeat;
   background-position: center;
 }
