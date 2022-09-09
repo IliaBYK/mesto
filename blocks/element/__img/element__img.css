@@ -4,3 +4,9 @@
   display: block;
   height: 282px;
 }
+
+.element__img:hover {
+  cursor: pointer;
+  opacity: .9;
+  transition: all 1s ease-in-out;
+}

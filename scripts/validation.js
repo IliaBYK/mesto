@@ -1,21 +1,21 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
   //Ошибка длины текста перекрывает нижний инпут, пришлось ввести такое условие, чтобы изменить размер шрифта 
   //и размер текста соответственноы
   if (errorElement.textContent.length > 30) {
-    errorElement.style.fontSize = '10px';
+    errorElement.classList.add('popup__input-error_font-size_small');
   } else {
-    errorElement.style.fontSize = '12px';
+    errorElement.classList.remove('popup__input-error_font-size_small');
   }
-  errorElement.classList.add('popup__input-error_active');
+  errorElement.classList.add(config.errorClass);
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error_active');
+  inputElement.classList.remove(config.inputErrorClass);
+  errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
 };
 
@@ -33,17 +33,27 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+const disableButton = (buttonElement) => {
+  buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.disabled = true;
+  }
+
+const enableButton = (buttonElement) => {
+  buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('button_disabled');
+    disableButton(buttonElement);
   } else {
-    buttonElement.classList.remove('button_disabled');
+    enableButton(buttonElement);
   }
 };
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElements = Array.from(formElement.querySelectorAll('.popup__submit-button'));
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const buttonElements = Array.from(formElement.querySelectorAll(config.submitButtonSelector));
   buttonElements.forEach((buttonElement) => {
     toggleButtonState(inputList, buttonElement);
   });
@@ -58,20 +68,22 @@ const setEventListeners = (formElement) => {
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
+      preventDefaultFunction(evt);
     });
 
-    const fieldsetList = Array.from(formElement.querySelectorAll('.popup__set'));
+    const fieldsetList = Array.from(formElement.querySelectorAll(config.fieldSelector));
 
-    fieldsetList.forEach((fieldset) => {
-      setEventListeners(fieldset);
+    fieldsetList.forEach((formElement) => {
+      setEventListeners(formElement);
     });
   });
 };
 
-enableValidation();
+// включение валидации вызовом enableValidation
+
+enableValidation(config);
 

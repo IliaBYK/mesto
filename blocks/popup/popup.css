@@ -9,4 +9,5 @@
   transition: opacity .5s ease-out;
   opacity: 0;
   visibility: hidden;
+  z-index: 10;
 }
