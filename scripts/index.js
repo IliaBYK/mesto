@@ -35,7 +35,7 @@ function openPopupEdit() {
   const buttonPopupEditSubmit = popupEdit.querySelector('#popupEdit__submit-button');
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
-  enableButton(buttonPopupEditSubmit);
+  enableButton(buttonPopupEditSubmit, configObj);
   openPopup(popupEdit);
 };
 buttonEdit.addEventListener('click', openPopupEdit);
@@ -52,8 +52,6 @@ const preventDefaultFunction = (evt) => {
 const popupEditForm = document.querySelector('#popupEditForm');
 
 function handleProfileFormSubmit(evt) {
-  preventDefaultFunction(evt);
-
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
 
@@ -124,10 +122,9 @@ const popupAddForm = document.querySelector('#popupFormAdd');
 
 function handlePopupAddFormSubmit(evt) {
   const buttonSubmitAddCard = popupAdd.querySelector('#popupAdd-submitButton');
-  preventDefaultFunction(evt);
   addCard();
   popupAddForm.reset();
-  disableButton(buttonSubmitAddCard);
+  disableButton(buttonSubmitAddCard, configObj);
   closePopupAdd();
 }
 
