@@ -36,21 +36,21 @@ export class FormValidator {
   }
 
   //активность кнопки
-  _disableButton(buttonElement) {
+  disableButton(buttonElement) {
     buttonElement.classList.add(this._config.inactiveButtonClass);
     buttonElement.disabled = true;
   }
 
-  _enableButton(buttonElement) {
+  enableButton(buttonElement) {
     buttonElement.classList.remove(this._config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 
   _toggleButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
-      this._disableButton(buttonElement);
+      this.disableButton(buttonElement);
     } else {
-      this._enableButton(buttonElement);
+      this.enableButton(buttonElement);
     }
   }
 
@@ -73,7 +73,7 @@ export class FormValidator {
   }
 
   // включение валидации enableValidation
-  _enableValidation() {
+  enableValidation() {
     const formList = Array.from(document.querySelectorAll(this._config.formSelector));
     formList.forEach(() => {
       this._form.addEventListener('submit', (evt) => {

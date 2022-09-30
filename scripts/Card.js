@@ -1,10 +1,11 @@
-import { closePopupByEsc } from './index.js';
+import { openPopup as openPopupFunc, closePopupByEsc, popupDescription, popupImage, popupImg } from './utils.js';
 
 export class Card {
   constructor(data, popup, templateSelector) {
     this._srcValue = data.link;
     this._titleValue = data.name;
     this._popup = popup;
+
     this._templateSelector = templateSelector;
   }
 
@@ -23,8 +24,9 @@ export class Card {
     this._deleteButton();
     this._setEventListener();
 
-    this._element.querySelector('.element__img').src = this._srcValue;
-    this._element.querySelector('.element__img').alt = this._titleValue;
+    const image = this._element.querySelector('.element__img');
+    image.src = this._srcValue;
+    image.alt = this._titleValue;
     this._element.querySelector('.element__title').textContent = this._titleValue;
 
     return this._element;
@@ -38,6 +40,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _likeButton() {
@@ -51,11 +54,11 @@ export class Card {
   }
 
   _openPopup() {
-    this._popup.querySelector('.popup__img').src = this._srcValue;
-    this._popup.querySelector('.popup__description').textContent = this._titleValue;
-    this._popup.querySelector('.popup__img').alt = this._titleValue;
+    popupImg.src = this._srcValue;
+    popupDescription.textContent = this._titleValue;
+    popupImg.alt = this._titleValue;
 
-    this._popup.classList.add('popup_opened');
+    openPopupFunc(this._popup);
     document.addEventListener('keydown', closePopupByEsc);
   }
 
