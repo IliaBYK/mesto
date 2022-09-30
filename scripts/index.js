@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+
 const popupEdit = document.querySelector('#popupEdit');
 const popupAdd = document.querySelector('#popupAdd');
 const popupImage = document.querySelector('#popupOpenImg');
@@ -11,12 +14,34 @@ const nameInput = document.querySelector('#popup-name');
 const jobInput = document.querySelector('#popup-about');
 const cardsContainer = document.querySelector('.elements');
 
-const closePopupByEsc = (evt) => {
+const popupEditForm = document.querySelector('#popupEditForm');
+const popupAddForm = document.querySelector('#popupFormAdd');
+
+export const closePopupByEsc = (evt) => {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
 }
+
+//объект настроек
+const configObj = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  fieldSelector: '.popup__set',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
+
+//валидация
+const editFormValidator = new FormValidator(popupEditForm, configObj);
+const addFormValidator = new FormValidator(popupAddForm, configObj);
+
+//вызов функции валидации
+editFormValidator._enableValidation();
+addFormValidator._enableValidation();
 
 //открытие попапа
 function openPopup(popup) {
@@ -35,7 +60,7 @@ function openPopupEdit() {
   const buttonPopupEditSubmit = popupEdit.querySelector('#popupEdit__submit-button');
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
-  enableButton(buttonPopupEditSubmit, configObj);
+  editFormValidator._enableButton(buttonPopupEditSubmit);
   openPopup(popupEdit);
 };
 buttonEdit.addEventListener('click', openPopupEdit);
@@ -49,7 +74,6 @@ const preventDefaultFunction = (evt) => {
 }
 
 //сабмит формы редактирования профиля
-const popupEditForm = document.querySelector('#popupEditForm');
 
 function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
@@ -62,18 +86,19 @@ popupEditForm.addEventListener('submit', handleProfileFormSubmit);
 //popupEdit
 
 //попап картинки 
-const popupImg = popupImage.querySelector('#popupImg');
-const imageDescription = popupImage.querySelector('.popup__description');
 
-function openPopupImage(link, name) {
-  popupImg.src = link;
-  imageDescription.textContent = name;
+/*function openPopupImage(link, name) {
+  popupImage.image.src = link;
+  popupImage.imageDescription.textContent = name;
   
-  popupImg.alt = name;
-  openPopup(popupImage);
+  popupImage.image.alt = name;
+  const popup = new Popup(popupImage.popup, popupImage.image);
 }
 
-//добавление карточек при загрузке страницы
+openPopupImage(srcInput, titleInput);*/
+
+
+/*//добавление карточек при загрузке страницы
 function createCard(srcValue, titleValue) {
   const cardTemplate = document.querySelector('#cardTemplate').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
@@ -99,17 +124,28 @@ function createCard(srcValue, titleValue) {
 
 for (let i = 0; i < initialCards.length; i++) {
   renderCard(initialCards[i].link, initialCards[i].name);
-}
-//добавление карточек при загрузке страницы
+}*/
 
-//функция отрисовки карточки
-function renderCard(srcValue, titleValue) {
-  cardsContainer.prepend(createCard(srcValue, titleValue));
-}
+
+//добавление карточек при загрузке страницы
+initialCards.forEach((item) => {
+  const card = new Card(item, popupImage, '#cardTemplate');
+  const cardElement = card.generateCard();
+
+  cardsContainer.prepend(cardElement);
+});
+
 
 //добавление карточки 
 function addCard() {
-  renderCard(srcInput.value, titleInput.value);
+  const fields = {
+    link: srcInput.value,
+    name: titleInput.value,
+  };
+  const card = new Card(fields, popupImage, '#cardTemplate');
+  const cardElement = card.generateCard();
+
+  cardsContainer.prepend(cardElement);
 }
 
 //закрытие попапа добавления карточки
@@ -118,13 +154,12 @@ function closePopupAdd() {
 }
 
 //сабмит формы добавления карточки
-const popupAddForm = document.querySelector('#popupFormAdd');
 
-function handlePopupAddFormSubmit(evt) {
+function handlePopupAddFormSubmit() {
   const buttonSubmitAddCard = popupAdd.querySelector('#popupAdd-submitButton');
   addCard();
   popupAddForm.reset();
-  disableButton(buttonSubmitAddCard, configObj);
+  addFormValidator._disableButton(buttonSubmitAddCard);
   closePopupAdd();
 }
 
@@ -135,14 +170,7 @@ function openPopupAdd() {
   openPopup(popupAdd);
 }
 
-buttonAdd.addEventListener('click', openPopupAdd);
-
-//добавление карточки 
-
-//закрытие попапа с картинкой 
-function closePopupImage() {
-  closePopup(popupImage);
-}
+buttonAdd.addEventListener('click', openPopupAdd); 
 
 /*клик на оверлей*/
 
