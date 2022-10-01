@@ -1,6 +1,6 @@
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import { openPopup, popupImage, closePopup } from './utils.js';
+import { openPopup, closePopup } from './utils.js';
 
 const popupEdit = document.querySelector('#popupEdit');
 const popupAdd = document.querySelector('#popupAdd');
@@ -40,7 +40,7 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 const preparationCard = (list) => {
-  const card = new Card(list, popupImage, '#cardTemplate');
+  const card = new Card(list, '#cardTemplate');
 
   return card.generateCard();
 }
@@ -62,13 +62,9 @@ function closePopupEdit() {
   closePopup(popupEdit);
 }
 
-const preventDefaultFunction = (evt) => {
-  evt.preventDefault();
-}
-
 //сабмит формы редактирования профиля
 
-function handleProfileFormSubmit(evt) {
+function handleProfileFormSubmit() {
   profileName.textContent = nameInput.value;
   profileAbout.textContent = jobInput.value;
 

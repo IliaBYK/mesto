@@ -1,10 +1,9 @@
 import { openPopup as openPopupFunc, closePopupByEsc, popupDescription, popupImage, popupImg } from './utils.js';
 
 export class Card {
-  constructor(data, popup, templateSelector) {
+  constructor(data, templateSelector) {
     this._srcValue = data.link;
     this._titleValue = data.name;
-    this._popup = popup;
 
     this._templateSelector = templateSelector;
   }
@@ -58,8 +57,7 @@ export class Card {
     popupDescription.textContent = this._titleValue;
     popupImg.alt = this._titleValue;
 
-    openPopupFunc(this._popup);
-    document.addEventListener('keydown', closePopupByEsc);
+    openPopupFunc(popupImage);
   }
 
   _setEventListener() {
