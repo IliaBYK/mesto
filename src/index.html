@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
   <title>Место</title>
 </head>
 <body class="page">
 
   <!--header-->
   <header class="header">
-    <img src="images/logo.svg" alt="Логотип" class="header__logo">
+    <div class="header__logo"></div>
   </header>
 
   <!--container-->
   <main class="container">
     <!--profile-->
     <section class="profile">
-      <img src="images/avatar.jpg" alt="Аватар профиля" class="profile__avatar">
+      <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar">
 
       <div class="profile__info">
         <div class="profile__head">
@@ -85,12 +84,12 @@
       <form name="popupForm" class="popup__form" id="popupFormAdd" novalidate>
         <fieldset class="popup__set">
           <label class="popup__field">
-            <input type="text" class="popup__input" id="popup-place-name" name="popupPlaceName" placeholder="Название" minlength="2" maxlength="30" required>
+            <input type="text" class="popup__input" id="popup-place-name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="popup-place-name-error popup__input-error"></span>
           </label>
 
           <label class="popup__field">
-            <input type="url" class="popup__input" id="popup-src" name="popupSrc" placeholder="Ссылка на картинку" required>
+            <input type="url" class="popup__input" id="popup-src" name="link" placeholder="Ссылка на картинку" required>
             <span class="popup-src-error popup__input-error"></span>
           </label>
 
@@ -111,7 +110,6 @@
     </div>
   </div>
 
-  <script defer src="scripts/cards.js"></script>
-  <script type="module" src="scripts/index.js"></script>
+  <script type="module" src="pages/index.js"></script>
 </body>
 </html>
