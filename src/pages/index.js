@@ -50,7 +50,7 @@ const popupAdding = new PopupWithForm({popupSelector: '#popupAdd', handleSubmitF
 popupAdding.setEventListeners();
 
 const popupEditing = new PopupWithForm({popupSelector: '#popupEdit', handleSubmitForm: (items) => {
-  userInfo.setUserInfo({profile: items.popupName, about: items.popupAbout});
+  userInfo.setUserInfo(items.profile, items.about);
   popupEditing.close();
 }});
 popupEditing.setEventListeners();
@@ -64,6 +64,7 @@ buttonAdd.addEventListener('click', openPopupAdd);
 
 function openPopupEdit() {
   popupEditing.open();
+  popupEditing.setInputValues(userInfo.getUserInfo());
   editFormValidator.resetValidation();
 }
 

@@ -10,7 +10,7 @@ export default class UserInfo {
     return { profile, about };
   }
 
-  setUserInfo({profile, about}) {
+  setUserInfo(profile, about) {
     this._profile.textContent = profile;
     this._about.textContent = about;
   }
