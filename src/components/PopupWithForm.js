@@ -42,22 +42,6 @@ export default class PopupWithForm extends Popup {
     })
   }
 
-/*   if(!this._isLoading) {
-    const initialText = this._submitButton.textContent;
-    this._submitButton.textContent = "Сохранение...";
-    this._isLoading = true;
-    this._handleSubmitForm(this._getInputValues())
-      .then(() => {
-        this.close();
-        console.log("close");
-      })
-      .catch((err) => console.error(err.message))
-      .finally(() => {
-        this._submitButton.textContent = initialText;
-        this._isLoading = false;
-      });
-  } */
-
   close() {
     if (!this._popup.classList.contains('popup-edit')) {
       this._form.reset();
