@@ -17,6 +17,9 @@
 
 /*profile*/
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
+@import url(../blocks/profile/__avatar-pen/profile__avatar-pen.css);
+@import url(../blocks/profile/__avatar-overlay/profile__avatar-overlay.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__head/profile__head.css);
@@ -24,6 +27,7 @@
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+
 
 /*elements*/
 @import url(../blocks/elements/elements.css);
@@ -36,22 +40,29 @@
 @import url(../blocks/element/__like-button/element__like-buttton.css);
 @import url(../blocks/element/__like-button/_active/element__like-button_active.css);
 @import url(../blocks/element/__delete-button/element__delete-button.css);
+@import url(../blocks/element/__like-counter/element__like-counter.css);
 
 /*footer*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__description/footer__descripption.css);
 
-/*pop-up*/
+/*popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__container/_for/popup__container_for_image.css);
 @import url(../blocks/popup/__title/popup__title.css);
+/*popup__title_place_popup-confirm*/
+@import url(../blocks/popup/__title/_place/popup__title_place_popup-confirm.css);
+
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__set/popup__set.css);
 @import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
+/*popup__submit-button_place_popup-confirm*/
+@import url(../blocks/popup/__submit-button/_place/popup__sumbit-button_place_popup-confirm.css);
+
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/_action/popup_action_open-img.css);
 @import url(../blocks/popup/__description/popup__description.css);
@@ -59,7 +70,6 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__input-error/_font-size_small/popup__input-error_font-size_small.css);
-
 
 /*button_disabled*/
 @import url(../blocks/button/_disabled/button_disabled.css);

@@ -16,12 +16,17 @@
   <main class="container">
     <!--profile-->
     <section class="profile">
-      <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля" class="profile__avatar">
+      <div class="profile__avatar-container">
+        <div class="profile__avatar-overlay">
+          <div class="profile__avatar-pen"></div>
+        </div>
+        <img src="" alt="Аватар профиля" class="profile__avatar">
+      </div>
 
       <div class="profile__info">
         <div class="profile__head">
-          <h1 class="profile__title" name="name">Жак-Ив Кусто</h1>
-          <p class="profile__subtitle" name="about">Исследователь океана</p>
+          <h1 class="profile__title" name="name"></h1>
+          <p class="profile__subtitle" name="about"></p>
         </div>
         <button class="profile__edit-button button" type="button" aria-label="Кнопка редактирования профиля"></button>
       </div>  
@@ -48,19 +53,20 @@
       <div class="element__footer">
         <h3 class="element__title"></h3>
         <button class="element__like-button button" type="button" aria-label="Кнопка 'понравилось'"></button>
+        <p class="element__like-counter">0</p>
       </div>
     </article>
   </template>
   
   <!--editPopup-->
 
-  <div class="popup" id="popupEdit">
+  <div class="popup popup-edit" id="popupEdit">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form name="popupForm" class="popup__form" id="popupEditForm" novalidate>
         <fieldset class="popup__set">
           <label class="popup__field">
-            <input type="text" class="popup__input" id="popup-name" name="profile" placeholder="Имя" minlength="2" maxlength="40" required>
+            <input type="text" class="popup__input" id="popup-name" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
             <span class="popup-name-error popup__input-error"></span>
           </label>
 
@@ -109,5 +115,33 @@
       <p class="popup__description"></p>
     </div>
   </div>
+
+  <div class="popup popup-confirm" id="popupConfirm">
+    <div class="popup__container">
+      <button class="popup__close-button button" id="closeButtonPopupConfirm" type="reset" aria-label="Кнопка закрытия всплывающего окна"></button>
+      <h2 class="popup__title popup__title_place_popup-confirm">Вы уверены?</h2>
+      <button class="popup__submit-button button popup__submit-button_place_popup-confirm" id="popupConfirmSubmitButton" type="submit"
+        aria-label="Кнопка 'Создать'">Да</button>
+    </div>
+  </div>
+
+  <div class="popup" id="popupUpdate">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form name="popupForm" class="popup__form" id="popupUpdateForm" novalidate>
+        <fieldset class="popup__set">
+          <label class="popup__field popup__field_place_popup-update">
+            <input type="url" class="popup__input" id="popup-link" name="avatar" placeholder="Ссылка на аватар" required>
+            <span class="popup-name-error popup__input-error"></span>
+          </label>
+  
+          <button class="popup__submit-button button" id="popupUpdateSubmitButton" type="submit"
+            aria-label="Кнопка 'Сохранить'">Сохранить</button>
+        </fieldset>
+      </form>
+      <button class="popup__close-button button" type="reset" aria-label="Кнопка закрытия всплывающего окна"></button>
+    </div>
+  </div>
+
 </body>
 </html>

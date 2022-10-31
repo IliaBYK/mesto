@@ -1,8 +1,9 @@
 .element__like-button {
-  margin-left: auto;
   width: 22px;
   height: 19px;
-  align-self: center;
+  position: absolute;
+  right: 21px;
+  top: 23px;
   background: url(../../../images/element__like-button.svg);
 }
 

@@ -36,24 +36,20 @@ export const configObj = {
   errorClass: 'popup__input-error_active'
 };
 
+export const optionsApi = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-52', 
+  headers: {
+    authorization: '42488cc5-fe94-4fe0-b1f0-0d91c1eb8880',
+    'Content-Type': 'application/json'
+  }
+}
+
 export const popupImage = document.querySelector('#popupOpenImg');
 export const popupImg = popupImage.querySelector('.popup__img');
 export const popupDescription = popupImage.querySelector('.popup__description');
-
-const popupEdit = document.querySelector('#popupEdit');
-const popupAdd = document.querySelector('#popupAdd');
 export const buttonEdit = document.querySelector('.profile__edit-button');
 export const buttonAdd = document.querySelector('.profile__add-button');
 export const profileName = document.querySelector('.profile__title');
 export const profileAbout = document.querySelector('.profile__subtitle');
-const srcInput = popupAdd.querySelector('#popup-src');
-const titleInput = popupAdd.querySelector('#popup-place-name');
 export const nameInput = document.querySelector('#popup-name');
 export const jobInput = document.querySelector('#popup-about');
-const cardsContainer = document.querySelector('.elements');
-
-const buttonPopupEditSubmit = popupEdit.querySelector('#popupEdit__submit-button');
-const buttonSubmitAddCard = popupAdd.querySelector('#popupAdd-submitButton');
-
-const popupEditForm = document.querySelector('#popupEditForm');
-const popupAddForm = document.querySelector('#popupFormAdd');

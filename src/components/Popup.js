@@ -19,6 +19,15 @@ export default class Popup {
     }
   }
 
+  _renderLoading(isLoading, isLoadingText = 'Сохранение...') {
+    if(!this._submitButton) return;
+    if (isLoading) {
+      this._submitButton.textContent = isLoadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonTextContent;
+    }
+  }
+
   setEventListeners() {
     this._popup.addEventListener('click', (evt) => {
       if (evt.currentTarget === evt.target || evt.target.classList.contains('popup__close-button')) {

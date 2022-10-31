@@ -6,6 +6,8 @@ export default class PopupWithForm extends Popup {
     this._handleSubmitForm = handleSubmitForm;
     this._form = this._popup.querySelector('.popup__form');
     this._inputList = this._form.querySelectorAll('.popup__input');
+    this._submitButton = this._popup.querySelector('.popup__submit-button');
+    this._submitButtonTextContent = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -25,15 +27,41 @@ export default class PopupWithForm extends Popup {
   }
 
   setEventListeners() {
-    this._form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._handleSubmitForm(this._getInputValues());
-    });
     super.setEventListeners();
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      try {
+        super._renderLoading(true);
+        this._handleSubmitForm(this._getInputValues())
+        this.close();
+      } catch(err) { 
+        console.log(err)
+      } finally {
+        this._renderLoading(false);
+      };
+    })
   }
 
+/*   if(!this._isLoading) {
+    const initialText = this._submitButton.textContent;
+    this._submitButton.textContent = "Сохранение...";
+    this._isLoading = true;
+    this._handleSubmitForm(this._getInputValues())
+      .then(() => {
+        this.close();
+        console.log("close");
+      })
+      .catch((err) => console.error(err.message))
+      .finally(() => {
+        this._submitButton.textContent = initialText;
+        this._isLoading = false;
+      });
+  } */
+
   close() {
-    this._form.reset();
+    if (!this._popup.classList.contains('popup-edit')) {
+      this._form.reset();
+    }
     super.close();
   }
 }
