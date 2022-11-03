@@ -28,24 +28,19 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener("submit", (evt) => {
+
+    this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      try {
-        super._renderLoading(true);
-        this._handleSubmitForm(this._getInputValues())
-        this.close();
-      } catch(err) { 
-        console.log(err)
-      } finally {
-        this._renderLoading(false);
-      };
+      super._renderLoading(true);
+      this._handleSubmitForm(this._getInputValues())
+        .then(() => this.close())
+        .catch(err => console.log(err)) 
+        .finally(() => super._renderLoading(false))
     })
   }
 
   close() {
-    if (!this._popup.classList.contains('popup-edit')) {
-      this._form.reset();
-    }
+    this._form.reset();
     super.close();
   }
 }

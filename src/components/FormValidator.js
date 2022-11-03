@@ -11,7 +11,7 @@ export default class FormValidator {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._config.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.toggle('popup__input-error_font-size_small', errorElement.textContent.length > 30)
+    errorElement.classList.toggle(this._config.inputErrorSizeSmall, errorElement.textContent.length > 30)
     errorElement.classList.add(this._config.errorClass);
   }
 

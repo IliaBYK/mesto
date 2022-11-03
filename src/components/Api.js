@@ -15,19 +15,19 @@ export default class Api {
     return fetch(url, options).then(this._checkDataResponse);
   }
 
-  async getInitialCards() {
+  getInitialCards() {
     return this._getResponse(this._url + '/cards', {
       headers: this._headers
     })
   }
 
-  async getServerUserInfo() {
+  getServerUserInfo() {
     return this._getResponse(this._url + '/users/me', {
       headers: this._headers
     })
   }
 
-  async setServerUserInfo(inputs) {
+  setServerUserInfo(inputs) {
     return this._getResponse(this._url + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
@@ -38,7 +38,7 @@ export default class Api {
     })
   }
 
-  async postServerCard(inputs) {
+  postServerCard(inputs) {
     return this._getResponse(this._url + '/cards', {
       method: 'POST',
       headers: this._headers,
@@ -49,28 +49,28 @@ export default class Api {
     })
   }
 
-  async deleteCard(cardId) {
+  deleteCard(cardId) {
     return this._getResponse(this._url + '/cards/' + cardId, {
       method: 'DELETE',
       headers: this._headers,
     })
   }
 
-  async putLike(cardId) {
+  putLike(cardId) {
     return this._getResponse(this._url + '/cards/' + cardId + '/likes', {
       method: 'PUT',
       headers: this._headers,
     })
   }
 
-  async deleteLike(cardId) {
+  deleteLike(cardId) {
     return this._getResponse(this._url + '/cards/' + cardId + '/likes', {
       method: 'DELETE',
       headers: this._headers,
     })
   }
 
-  async setUserAvatar(inputs) {
+  setUserAvatar(inputs) {
     return this._getResponse(this._url + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,

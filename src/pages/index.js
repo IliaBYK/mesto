@@ -10,13 +10,9 @@ import { configObj, buttonAdd, buttonEdit, optionsApi } from '../utils/constants
 import './index.css';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
-const popupEdit = document.querySelector('#popupEdit');
-const popupAdd = document.querySelector('#popupAdd');
-const popupUpdateAvatar = document.querySelector('#popupUpdate');
-
-const popupEditForm = popupEdit.querySelector('#popupEditForm');
-const popupAddForm = popupAdd.querySelector('#popupFormAdd');
-const popupUpdateAvatarForm = popupUpdateAvatar.querySelector('#popupUpdateForm')
+const popupEditForm = document.forms['edit-profile'];
+const popupAddForm = document.forms['add-card'];
+const popupUpdateAvatarForm = document.forms['edit-avatar'];
 
 const api = new Api(optionsApi);
 
@@ -28,36 +24,35 @@ const updateFormValidator = new FormValidator(popupUpdateAvatarForm, configObj);
 //вызов функции валидации
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+updateFormValidator.enableValidation();
 
 const userInfo = new UserInfo({ nameSelector: '.profile__title', aboutSelector: '.profile__subtitle', avatarSelector: '.profile__avatar' });
-api.getServerUserInfo().then(res => {
-  userInfo.setUserInfo(res.name, res.about);
-  userInfo.setUserAvatar(res.avatar);
-});
 
 const popupConfirm = new PopupWithConfirm({popupSelector: '#popupConfirm', handleSubmitForm: (cardId, element) => {
-  api.deleteCard(cardId)
+  return api.deleteCard(cardId)
     .then(() => element.remove())
     .catch(err => console.log(err));
-  popupConfirm.close();
 }})
-
 popupConfirm.setEventListeners();
-
 
 const popupImageAction = new PopupWithImage('.popup_action_open-img');
 popupImageAction.setEventListeners();
 
-const cardList = new Section({
-  items: api.getInitialCards(), 
-  renderer: (item, userId) => {
-    userId = item.owner._id;
-    cardList.addItem(createCard(item))
-  }}, 
-  '.elements'
-);
+Promise.all([api.getServerUserInfo(), api.getInitialCards()])
+  .then(([serverUserInfo, cards]) => {
+    userInfo.setUserInfo(serverUserInfo.name, serverUserInfo.about)
+    userInfo.setUserAvatar(serverUserInfo.avatar);
+    cardList.renderItems(cards, serverUserInfo._id);
+  }).catch((err) => console.log(err));
 
-cardList.renderItems();
+const cardList = new Section({
+  renderer: (card, userId) => {
+    card.userId = userId;
+    cardList.addItem(createCard(card))
+  }
+},
+ '.elements'
+);
 
 const handleCardClick = (name, link) => {
   popupImageAction.open(name, link);
@@ -85,19 +80,18 @@ function createCard(data) {
 }
 
 const popupAdding = new PopupWithForm({popupSelector: '#popupAdd', handleSubmitForm: (items) => {
-  api.postServerCard(items)
+  return api.postServerCard(items)
     .then((res) => {
     res.userId = res.owner._id;
     cardList.addItem(createCard(res))
   });
-  popupAdding.close();
 }})
 popupAdding.setEventListeners();
 
 const popupEditing = new PopupWithForm({popupSelector: '#popupEdit', handleSubmitForm: (items) => {
-  api.setServerUserInfo(items);
-  userInfo.setUserInfo(items.name, items.about);
-  popupEditing.close();
+  return api.setServerUserInfo(items)
+    .then(res => userInfo.setUserInfo(res.name, res.about))
+    .catch(err => console.log(err));
 }});
 popupEditing.setEventListeners();
 
@@ -116,15 +110,20 @@ function openPopupEdit() {
 
 buttonEdit.addEventListener('click', openPopupEdit);
 
-const popupAvatar = new PopupWithForm({ popupSelector: '#popupUpdate', handleSubmitForm: (items) => {
-  userInfo.setUserAvatar(items.avatar);
-  api.setUserAvatar(items);
-  popupAvatar.close();
+const popupAvatar = new PopupWithForm({ popupSelector: '#popupUpdate', handleSubmitForm: (item) => {
+  return api.setUserAvatar(item)
+    .then(() => {userInfo.setUserAvatar(item.avatar)})
+    .catch((err) => console.log(err))
 }})
 popupAvatar.setEventListeners();
 
 function openPopupAvatar() {
+  updateFormValidator.resetValidation();
+  updateFormValidator.disableButton();
   popupAvatar.open();
 }
 
 document.querySelector('.profile__avatar-pen').addEventListener('click', openPopupAvatar);
+
+
+api.getServerUserInfo().then(res => console.log(res))

@@ -33,7 +33,8 @@ export const configObj = {
   submitButtonSelector: '.popup__submit-button',
   inactiveButtonClass: 'button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
+  errorClass: 'popup__input-error_active',
+  inputErrorSizeSmall: 'popup__input-error_font-size_small'
 };
 
 export const optionsApi = {

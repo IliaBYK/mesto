@@ -16,13 +16,12 @@ export default class PopupWithConfirm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
+
     this._submitButton.addEventListener("click", () => {
-      try {
-        super._renderLoading(true, "Удаление...")
-        this._handleSubmitForm(this._cardId, this._element)
-      } finally {
-        super._renderLoading(false)
-      }
+      super._renderLoading(true, "Удаление...")
+      this._handleSubmitForm(this._cardId, this._element)
+        .then(() => this.close())
+        .finally(() => super._renderLoading(false))
     })
   }
 }
