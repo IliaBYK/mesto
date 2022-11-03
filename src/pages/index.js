@@ -16,6 +16,10 @@ const popupUpdateAvatarForm = document.forms['edit-avatar'];
 
 const api = new Api(optionsApi);
 
+/*К сожалению не получилось реализовать деструктуризацию ответа от сервера и 
+универсально создать экземпляры валидаторов всех форм, мало времени, постарался исправить все критические замечания, 
+на каникулах постараюсь выполнить и все остальные рекомендации*/
+
 //валидация
 const editFormValidator = new FormValidator(popupEditForm, configObj);
 const addFormValidator = new FormValidator(popupAddForm, configObj);
