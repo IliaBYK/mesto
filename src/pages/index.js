@@ -100,8 +100,8 @@ const popupEditing = new PopupWithForm({popupSelector: '#popupEdit', handleSubmi
 popupEditing.setEventListeners();
 
 function openPopupAdd() {
+  addFormValidator.resetValidation();
   popupAdding.open();
-  addFormValidator.disableButton();
 }
 
 buttonAdd.addEventListener('click', openPopupAdd);
@@ -123,11 +123,7 @@ popupAvatar.setEventListeners();
 
 function openPopupAvatar() {
   updateFormValidator.resetValidation();
-  updateFormValidator.disableButton();
   popupAvatar.open();
 }
 
 document.querySelector('.profile__avatar-pen').addEventListener('click', openPopupAvatar);
-
-
-api.getServerUserInfo().then(res => console.log(res))
